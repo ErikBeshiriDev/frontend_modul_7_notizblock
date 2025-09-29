@@ -16,14 +16,27 @@ function getNoteTemplate(note) {
     return `<p>+ ${note}</p>`
 }
 
-
-
-
-
-
-
-
-
 //notizen hinzufügen
+function addNote() {
+    let noteInputRef = document.getElementById('note_input');
+    let noteInput = noteInputRef.value;
+
+    notes.push(noteInput)
+
+    renderNotes();
+
+    noteInputRef.value = "";
+}
+
+
+
+
+
+
+
+
+
+
+
 //notizen löschen
 //notizen archivieren
