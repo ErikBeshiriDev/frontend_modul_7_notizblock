@@ -2,6 +2,9 @@
 
 let notes = ['banana', 'rasen mähen'];
 
+let trashNotes = [];
+
+
 function renderNotes() {
     let contentRef = document.getElementById('content')
     contentRef.innerHTML = "";
@@ -11,8 +14,22 @@ function renderNotes() {
     }
 }
 
+
+function renderTrashNotes() {
+    let trashContentRef = document.getElementById('trashcontent')
+    trashContentRef = "";
+
+    for (let indexTrashNote = 0; indexTrashNote < trashNotes.length; indexTrashNote++) {
+        trashContentRef.innerHTML += getTrashNoteTemplate(indexTrashNote);
+    }
+}
+
 function getNoteTemplate(indexNote) {
-    return `<p>+ ${notes[indexNote]}<button oclick="deleteNote(indexNote)>x</button></p>`
+    return `<p>+ ${notes[indexNote]}<button oclick="deleteNote(${indexNote})">x</button></p>`
+}
+
+function getTrashNoteTemplate(indexTrashNote) {
+    return `<p>+ ${notes[indexTrashNote]}<button oclick="deleteNote(${indexTrashNote})">x</button></p>`
 }
 
 function addNote() {
@@ -34,8 +51,10 @@ function addNote() {
 // anzeige updaten
 
 function deleteNote(indexNote) {
-    notes.spilce(indexNote, 1);
+    trashNote = notes.spilce(indexNote, 1);
+    trashNotes.push(trashNote);
     renderNotes();
+    renderTrashNotes();
 }
 
 
