@@ -7,16 +7,14 @@ function renderNotes() {
     contentRef.innerHTML = "";
 
     for (let indexNote = 0; indexNote < notes.length; indexNote++) {
-        const note = notes[indexNote];
-        contentRef.innerHTML += getNoteTemplate(note);
+        contentRef.innerHTML += getNoteTemplate(indexNote);
     }
 }
 
-function getNoteTemplate(note) {
-    return `<p>+ ${note}</p>`
+function getNoteTemplate(indexNote) {
+    return `<p>+ ${notes[indexNote]}<button oclick="deleteNote(indexNote)>x</button></p>`
 }
 
-//notizen hinzufügen
 function addNote() {
     let noteInputRef = document.getElementById('note_input');
     let noteInput = noteInputRef.value;
@@ -29,14 +27,27 @@ function addNote() {
 }
 
 
-
-
-
-
-
-
-
-
-
 //notizen löschen
+
+// weelche notiz muss ge4löscht werden
+// wann muss die notiz gelöscht werden
+// anzeige updaten
+
+function deleteNote(indexNote) {
+    notes.spilce(indexNote, 1);
+    renderNotes();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //notizen archivieren
